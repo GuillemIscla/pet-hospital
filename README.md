@@ -1,6 +1,6 @@
-#Variance in a pet hospital
+# Variance in a pet hospital
 
-##Introduction
+## Introduction
 This example is kind of a real life visualization on defining variance on types, I hope you can understand that there is an actual motivation behind this concept. 
 You can about it too in the official [scala documentation](https://docs.scala-lang.org/tour/variances.html)
 The topic is also visited in Martin Ordesky's scala course
@@ -19,21 +19,21 @@ The <: and :> notation is used to express the subtype relation. "A <: B" reads a
 A higher kinded type is a type that depends on other types such as List[T] which depends on T. Each higher kinded types is 
 actually a family of types, one type for each T you put as the inner type.
 
-###Covariance
+### Covariance
 Covariance is the type of variance which preserve the type chain of the inner types, as the Co- prefix suggests.
 
 When a higher kinded type H is covariant on T we will write H[+T]
 
 So if we have A <: B and the higher kinded type H[+T], then it follows that H[A] <: H[B]
 
-###Contravariance
+### Contravariance
 Contravariance is the type of variance which preserve the type chain of the inner types in reverse order, as the Contra- prefix suggests.
 
 When a higher kinded type H is contravariant on T we will write H[-T]
 
 So if we have A <: B and the higher kinded type H[-T], then it follows that H[A] :> H[B]
 
-###Invariance
+### Invariance
 Invariance is the type of variance which does not infer any subtyping structure on the higher kinded types of that type, as the In- prefix suggests.
 
 When a higher kinded type H is invariant on T we will write H[T]
@@ -41,7 +41,7 @@ When a higher kinded type H is invariant on T we will write H[T]
 So even if we have A <: B and the higher kinded type H[T], not H[A] <: H[B] neither H[A] :> H[B] follow
 
 
-##Going to the job
+## Going to the job
 Imagine you were to work as an assistant in a pet hospital. 
 The job requires you to learn about type variance and you don't know what it is. 
 You do know that some types are subtypes of others though. This is your introduction day.
@@ -64,7 +64,7 @@ trait Dog extends Pet {
 }
 ```
 
-###Morning with covariance (+):
+### Morning with covariance (+):
 The manager asks you to go to the first two waiting customers and implement their code in the forms.
 
 ```
@@ -116,7 +116,7 @@ You find some forms for Customer[Dog], they don't seem to work on a Customer[Pet
 //customerForm3.getPatient().sayWoof() //getPatient().sayWoof() can be done by Customer[Dog] but not by Customer[Pet]
 ```
 
-###Noon with contravariance (-):
+### Noon with contravariance (-):
 You seem to have learned how the types work now. 
 At noon when having lunch you meet Chuck a dog doctor and Cathy a cat doctor. 
 They tell you about them and their work:
@@ -182,7 +182,7 @@ val doctorForm2:Doctor[Chiwawa] = Chuck
 val doctorForm3:Doctor[BullDog] = Chuck
 ```
 
-###Afternoon with invariance (no sign):
+### Afternoon with invariance (no sign):
 After treating the animals, some of them will spend the night at the hospital in containers. 
 It would seem that the hospital got rid of the containers for cats of a brand named Schrodinger, 
 apparently cats were dead inside (or were they?).
@@ -229,7 +229,7 @@ So that means really you have to get the exact type every time then:
 // containerForm2.put(myCat) //put with input cat can be done by Container[Pet] but not by Container[Dog]
 ```
 
-###At the end of the day. Comparing the variances
+### At the end of the day. Comparing the variances
 The manager meets with you to explain the whole system again comparing the cases you've been facing:
 
 Regarding the task you had to do in the morning.
@@ -284,7 +284,7 @@ In our case:
 
 
 
-###After the working day
+### After the working day
 
 The manager tells you that is your first day with this concept. You will get better as long as you work with it. The important facts is that they have rules and you now know where to read about them whenever you need. You can try these things though, with the code provided and see the errors that come up (In Intellij should be underlined before clicking compile):
 
